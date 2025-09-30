@@ -1,4 +1,3 @@
-
 const headerMenu=document.querySelector('.hm-header');
 
 console.log(headerMenu.offsetTop);
@@ -57,3 +56,5 @@ menu.addEventListener('click',()=>{
 menuClose.addEventListener('click',()=>{
     document.querySelector('.header-menu-movil').classList.remove('active');
 })
+
+;
