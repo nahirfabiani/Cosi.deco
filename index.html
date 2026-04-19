@@ -1,471 +1,1799 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cosi.Deco - Dale vida a tu hogar</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-    <!-- FUENTE GOOGLE FONTS : Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- ── SEO BÁSICO ── -->
+  <title>COSI — Textiles para el Hogar | Almohadones, Mantas, Manteles</title>
+  <meta name="description" content="COSI es tu tienda de textiles para el hogar. Almohadones, mantas, manteles y repasadores de calidad. Enviamos a todo el país."/>
+  <meta name="keywords" content="almohadones, mantas, manteles, repasadores, textiles hogar, deco hogar, cosi deco"/>
+  <meta name="author" content="COSI.DECO"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://cosideco.com.ar/"/>
 
-    <!-- ICONS: Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- ── OPEN GRAPH (redes sociales) ── -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="COSI — Textiles para el Hogar"/>
+  <meta property="og:description" content="Almohadones, mantas, manteles y repasadores de calidad. Enviamos a todo el país."/>
+  <meta property="og:image" content="img/img-banner.png"/>
+  <meta property="og:url" content="https://cosideco.com.ar/"/>
+  <meta property="og:locale" content="es_AR"/>
 
+  <!-- ── SCHEMA.ORG ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "COSI.DECO",
+    "description": "Tienda de textiles para el hogar: almohadones, mantas, manteles y repasadores.",
+    "url": "https://cosideco.com.ar",
+    "telephone": "+541162674311",
+    "address": { "@type": "PostalAddress", "addressCountry": "AR" },
+    "priceRange": "$$"
+  }
+  </script>
 
-    <!-- ICONS: Line Awesome -->
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <!-- ── FONTS ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Jost:ital,wght@1,300&display=swap" rel="stylesheet"/>
 
-    <!-- Animaciones AOS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <!-- ── ICONS ── -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+  <!-- ── AOS ── -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
 
-    <!-- Mis Estilos -->
-    <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    /* ═══════════════════════════════════════
+       VARIABLES & RESET
+    ═══════════════════════════════════════ */
+    :root {
+      --crema:      #F5F0E8;
+      --crema-d:    #EDE5D6;
+      --beige:      #D9CCBA;
+      --marron:     #7A6652;
+      --negro:      #1A1A1A;
+      --gris:       #6B6B6B;
+      --gris-c:     #E8E4DE;
+      --blanco:     #FFFFFF;
+      --acento:     #C4885A;
+      --acento-d:   #A66E42;
+      --verde:      #4A7C59;
+      --fondo:      #FAF8F5;
+      --borde:      #E2DDD6;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--blanco);
+      color: var(--negro);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ═══════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+
+    #navbar.scrolled {
+      border-bottom-color: var(--borde);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--negro);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gris);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--negro); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Carrito botón */
+    #btn-cart {
+      position: relative;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: var(--negro);
+      transition: color .2s;
+      padding: 4px;
+    }
+    #btn-cart:hover { color: var(--acento); }
+
+    #cart-count {
+      position: absolute;
+      top: -4px; right: -6px;
+      background: var(--acento);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 600;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0);
+      transition: all .25s;
+    }
+    #cart-count.show { opacity: 1; transform: scale(1); }
+
+    /* Hamburger */
+    #nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    #nav-hamburger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--negro);
+      transition: all .3s;
+    }
+
+    /* Menu móvil */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--negro);
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--crema);
+      letter-spacing: 0.06em;
+      transition: color .2s;
+    }
+    #mobile-menu a:hover { color: var(--acento); }
+    #close-mobile {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none; border: none;
+      color: var(--crema);
+      font-size: 28px;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO BANNER
+    ═══════════════════════════════════════ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      max-height: 900px;
+      overflow: hidden;
+      margin-top: 70px;
+    }
+
+    #hero .hero-img {
+      position: absolute; inset: 0;
+    }
+
+    #hero .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(26,26,26,0.62) 0%,
+        rgba(26,26,26,0.2) 60%,
+        transparent 100%
+      );
+    }
+
+    #hero .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 24px;
+      max-width: 680px;
+      margin: 0 auto 0 calc(50% - 580px);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: rgba(255,255,255,0.45);
+    }
+
+    #hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    #hero h1 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      max-width: 380px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--acento);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      transition: background .25s, transform .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { background: var(--acento-d); transform: translateY(-2px); }
+
+    .btn-ghost {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .btn-ghost:hover { color: #fff; }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.45);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,0.3);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: .3; transform: scaleY(1); }
+      50% { opacity: .8; transform: scaleY(1.3); }
+    }
+
+    /* ═══════════════════════════════════════
+       SECCIÓN GENÉRICA
+    ═══════════════════════════════════════ */
+    .section { padding: 90px 0; }
+    .section.bg-crema { background: var(--fondo); }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acento);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      width: 22px; height: 1px;
+      background: var(--acento);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--negro);
+      margin-bottom: 14px;
+    }
+    .section-title em { font-style: italic; color: var(--gris); }
+
+    .section-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gris);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 52px;
+    }
+
+    /* ═══════════════════════════════════════
+       CATEGORÍAS
+    ═══════════════════════════════════════ */
+    #categorias .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .cat-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+
+    .cat-item img {
+      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
+    }
+    .cat-item:hover img { transform: scale(1.06); }
+
+    .cat-item .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,.7) 0%, transparent 55%);
+      transition: opacity .3s;
+    }
+
+    .cat-item .cat-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 20px 20px;
+    }
+
+    .cat-item .cat-label p {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+    }
+
+    .cat-item .cat-label h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    /* ═══════════════════════════════════════
+       PRODUCTOS — TABS
+    ═══════════════════════════════════════ */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--borde);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gris);
+      padding: 12px 20px;
+      position: relative;
+      transition: color .2s;
+    }
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 2px;
+      background: var(--negro);
+      transform: scaleX(0);
+      transition: transform .25s;
+    }
+    .tab-btn.active, .tab-btn:hover { color: var(--negro); }
+    .tab-btn.active::after { transform: scaleX(1); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ═══════════════════════════════════════
+       GRID PRODUCTOS
+    ═══════════════════════════════════════ */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--blanco);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--borde);
+      transition: box-shadow .3s, transform .3s;
+      position: relative;
+    }
+    .product-card:hover {
+      box-shadow: 0 12px 48px rgba(122,102,82,0.12);
+      transform: translateY(-4px);
+    }
+
+    .p-img-wrap {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .p-img-wrap img { transition: transform .5s ease; }
+    .product-card:hover .p-img-wrap img { transform: scale(1.05); }
+
+    .p-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .badge-new { background: var(--verde); color: #fff; }
+    .badge-sale { background: var(--acento); color: #fff; }
+
+    /* Botón rápido add */
+    .p-quick-add {
+      position: absolute;
+      bottom: 12px; left: 12px; right: 12px;
+      background: rgba(26,26,26,0.88);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 11px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .25s, transform .25s;
+    }
+    .product-card:hover .p-quick-add {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .p-quick-add:active { transform: scale(.97); }
+
+    .p-info {
+      padding: 18px 16px 20px;
+    }
+    .p-info h3 {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--negro);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .p-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .p-price .current {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--negro);
+    }
+    .p-price .original {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--beige);
+      text-decoration: line-through;
+    }
+
+    /* ═══════════════════════════════════════
+       BANNER MID (LIFESTYLE)
+    ═══════════════════════════════════════ */
+    #lifestyle {
+      position: relative;
+      height: 480px;
+      overflow: hidden;
+    }
+    #lifestyle img { height: 100%; }
+    #lifestyle .life-overlay {
+      position: absolute; inset: 0;
+      background: rgba(26,26,26,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+    #lifestyle h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+    }
+    #lifestyle h2 em { font-style: italic; color: rgba(255,255,255,0.65); }
+
+    /* ═══════════════════════════════════════
+       BENEFICIOS
+    ═══════════════════════════════════════ */
+    #beneficios {
+      background: var(--negro);
+      padding: 60px 0;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 32px;
+    }
+    .benefit-item {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .benefit-icon {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      color: var(--acento);
+    }
+    .benefit-item h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .benefit-item p {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--negro);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 72px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    .footer-brand .f-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--crema);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.75;
+      max-width: 260px;
+      margin-bottom: 24px;
+    }
+
+    .f-social {
+      display: flex;
+      gap: 12px;
+    }
+    .f-social a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      transition: border-color .2s, color .2s;
+    }
+    .f-social a:hover { border-color: var(--acento); color: var(--acento); }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crema);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--crema); }
+
+    .footer-newsletter p {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+    .f-form {
+      display: flex;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .f-form input {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--crema);
+      outline: none;
+      font-family: inherit;
+    }
+    .f-form input::placeholder { color: rgba(255,255,255,0.25); }
+    .f-form button {
+      background: var(--acento);
+      border: none;
+      padding: 0 18px;
+      color: #fff;
+      font-size: 13px;
+      transition: background .2s;
+    }
+    .f-form button:hover { background: var(--acento-d); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-bottom a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      transition: color .2s;
+    }
+    .footer-bottom a:hover { color: var(--crema); }
+
+    /* ═══════════════════════════════════════
+       WHATSAPP FLOAT
+    ═══════════════════════════════════════ */
+    #whatsapp-btn {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 400;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      font-size: 26px;
+      color: #fff;
+      transition: transform .2s, box-shadow .2s;
+    }
+    #whatsapp-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+    }
+
+    /* ═══════════════════════════════════════
+       CARRITO SIDEBAR
+    ═══════════════════════════════════════ */
+    #cart-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    #cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    #cart-sidebar {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100%;
+      width: 420px;
+      max-width: 100vw;
+      background: var(--blanco);
+      z-index: 700;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.1);
+    }
+    #cart-sidebar.open { transform: translateX(0); }
+
+    .cart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--borde);
+    }
+    .cart-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--negro);
+    }
+    .cart-head .cart-count-label {
+      font-size: 12px;
+      color: var(--gris);
+      margin-left: 8px;
+    }
+    #btn-close-cart {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: var(--gris);
+      transition: color .2s;
+    }
+    #btn-close-cart:hover { color: var(--negro); }
+
+    #cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 16px;
+      color: var(--gris);
+      text-align: center;
+    }
+    .cart-empty i { font-size: 48px; opacity: .25; }
+    .cart-empty p { font-size: 14px; font-weight: 300; }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--borde);
+      animation: fadeSlide .3s ease;
+    }
+    @keyframes fadeSlide {
+      from { opacity:0; transform:translateX(10px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+
+    .cart-item-img {
+      width: 80px; height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--crema);
+    }
+    .cart-item-info h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--negro);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .cart-item-info .ci-price {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--negro);
+      margin-bottom: 10px;
+    }
+    .qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .qty-ctrl button {
+      background: none;
+      border: none;
+      width: 30px; height: 30px;
+      font-size: 16px;
+      color: var(--negro);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    .qty-ctrl button:hover { background: var(--crema); }
+    .qty-ctrl span {
+      min-width: 32px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .btn-remove-item {
+      background: none;
+      border: none;
+      color: var(--beige);
+      font-size: 16px;
+      padding: 4px;
+      transition: color .2s;
+      margin-top: 2px;
+    }
+    .btn-remove-item:hover { color: #c0392b; }
+
+    .cart-footer {
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--borde);
+    }
+
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .cart-subtotal p { font-size: 13px; color: var(--gris); }
+    .cart-subtotal .subtotal-val {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--negro);
+    }
+
+    .cart-shipping-note {
+      font-size: 11px;
+      color: var(--gris);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cart-shipping-note i { color: var(--verde); }
+
+    .btn-checkout {
+      width: 100%;
+      background: var(--negro);
+      color: var(--blanco);
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background .2s, transform .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-checkout:hover { background: var(--marron); transform: translateY(-1px); }
+
+    .btn-checkout-wa {
+      width: 100%;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 10px;
+      transition: background .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-checkout-wa:hover { background: #1EB85A; }
+
+    /* Toast notificación */
+    #toast {
+      position: fixed;
+      bottom: 100px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--negro);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 400;
+      z-index: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    #toast i { color: var(--verde); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      #hero { max-height: 520px; }
+      #hero .hero-content { margin: 0; padding: 0 20px; }
+      #hero h1 { font-size: 2.8rem; }
+
+      #categorias .cat-grid { grid-template-columns: repeat(2,1fr); }
+      .products-grid { grid-template-columns: repeat(2,1fr); gap: 16px; }
+      .benefits-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .nav-links { display: none; }
+      #nav-hamburger { display: flex; }
+
+      #lifestyle { height: 320px; }
+      #lifestyle h2 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr; }
+      #categorias .cat-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .section { padding: 60px 0; }
+      #cart-sidebar { width: 100vw; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="hm-wrapper">
+<!-- ══════════════════════════════
+     NAVBAR
+══════════════════════════════ -->
+<header id="navbar" role="banner">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="COSI inicio">COSI</a>
 
-        <!-- =================================
-           HEADER MENU
-        ================================== -->
-        <div class="hm-header">
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#categorias">Categorías</a>
+        <a href="#productos">Productos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
 
-            <div class="container">
-                <div class="header-menu">
+      <div class="nav-right">
+        <button id="btn-cart" aria-label="Abrir carrito de compras">
+          <i class="fa-regular fa-bag-shopping"></i>
+          <span id="cart-count" aria-live="polite">0</span>
+        </button>
+        <button id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 
-                    <div class="hm-logo">
-                        <a href="#">
-                            <img src="img/logo-home-master-store.png" alt="">
-                        </a>
-                    </div>
+<!-- Menú móvil -->
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <button id="close-mobile" aria-label="Cerrar menú"><i class="fas fa-times"></i></button>
+  <a href="#categorias">Categorías</a>
+  <a href="#productos">Productos</a>
+  <a href="#contacto">Contacto</a>
+</nav>
 
-                    <nav class="hm-menu">
-                        <ul>
-                            <li><a href="#Categorías">Categorías</a></li>
-                            <li><a href="#Productos">Productos</a></li>
-                            <li><a href="#Contacto">Contacto</a></li>
-                        </ul>
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<main>
+  <section id="hero" aria-label="Banner principal">
+    <div class="hero-img">
+      <img src="img/img-banner.png" alt="Hogar decorado con textiles COSI" loading="eager" fetchpriority="high"/>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+      <div class="hero-eyebrow">Nueva colección 2025</div>
+      <h1>Dale calidad<br/>a tu <em>hogar</em></h1>
+      <p class="hero-desc">Textiles de autor para espacios con carácter. Almohadones, mantas y más.</p>
+      <div class="hero-actions">
+        <a href="#productos" class="btn-primary">
+          Ver productos
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#categorias" class="btn-ghost">Explorar categorías →</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
+  <!-- ══════════════════════════════
+       CATEGORÍAS
+  ══════════════════════════════ -->
+  <section class="section" id="categorias" aria-labelledby="cat-title">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Colecciones</div>
+      <h2 class="section-title" id="cat-title" data-aos="fade-up" data-aos-delay="80">
+        Explorá <em>nuestras categorías</em>
+      </h2>
+      <p class="section-sub" data-aos="fade-up" data-aos-delay="130">
+        Cada pieza está pensada para transformar tu espacio con textura, color y confort.
+      </p>
 
-                
+      <div class="cat-grid" data-aos="fade-up" data-aos-delay="160">
 
-                        <div class="icon-menu">
-                            <button type="button"><i class="fas fa-bars"></i></button>
-                        </div>
+        <article class="cat-item">
+          <img src="img/c-1.png" alt="Categoría Almohadones — cojines decorativos para sofás y camas" loading="lazy"/>
+          <div class="cat-overlay"></div>
+          <div class="cat-label">
+            <p>Categoría</p>
+            <h3>Almohadones</h3>
+          </div>
+        </article>
 
-                    </nav>
+        <article class="cat-item">
+          <img src="img/c-2.png" alt="Categoría Mantas — mantas tejidas para hogar" loading="lazy"/>
+          <div class="cat-overlay"></div>
+          <div class="cat-label">
+            <p>Categoría</p>
+            <h3>Mantas</h3>
+          </div>
+        </article>
 
-                </div>
+        <article class="cat-item">
+          <img src="img/c-3.png" alt="Categoría Manteles — manteles de tela para mesa" loading="lazy"/>
+          <div class="cat-overlay"></div>
+          <div class="cat-label">
+            <p>Categoría</p>
+            <h3>Manteles</h3>
+          </div>
+        </article>
+
+        <article class="cat-item">
+          <img src="img/c-4.png" alt="Categoría Repasadores — repasadores de cocina" loading="lazy"/>
+          <div class="cat-overlay"></div>
+          <div class="cat-label">
+            <p>Categoría</p>
+            <h3>Repasadores</h3>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PRODUCTOS
+  ══════════════════════════════ -->
+  <section class="section bg-crema" id="productos" aria-labelledby="prod-title">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Catálogo</div>
+      <h2 class="section-title" id="prod-title" data-aos="fade-up" data-aos-delay="80">
+        Productos <em>destacados</em>
+      </h2>
+
+      <!-- Tabs nav -->
+      <div class="tabs-nav" role="tablist" data-aos="fade-up" data-aos-delay="120">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="almohadones">Almohadones</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="mantas">Mantas</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="manteles">Manteles</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="repasadores">Repasadores</button>
+      </div>
+
+      <!-- ALMOHADONES -->
+      <div class="tab-panel active" id="tab-almohadones" role="tabpanel">
+        <div class="products-grid">
+
+          <article class="product-card" data-aos="fade-up">
+            <div class="p-img-wrap">
+              <img src="img/5.png" alt="Almohadón de Tusor decorativo beige" loading="lazy"/>
+              <span class="p-badge badge-new">Nuevo</span>
+              <button class="p-quick-add"
+                data-name="Almohadón de Tusor"
+                data-price="14990"
+                data-img="img/5.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
             </div>
+            <div class="p-info">
+              <h3>Almohadón de Tusor</h3>
+              <div class="p-price"><span class="current">$14.990</span></div>
+            </div>
+          </article>
+
+          <article class="product-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="p-img-wrap">
+              <img src="img/6.png" alt="Almohadón de Pana marrón" loading="lazy"/>
+              <button class="p-quick-add"
+                data-name="Almohadón de Pana"
+                data-price="19970"
+                data-img="img/6.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Almohadón de Pana</h3>
+              <div class="p-price"><span class="current">$19.970</span></div>
+            </div>
+          </article>
+
+          <article class="product-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="p-img-wrap">
+              <img src="img/7.png" alt="Almohadón Rústico estampado" loading="lazy"/>
+              <button class="p-quick-add"
+                data-name="Almohadón Rústico"
+                data-price="17000"
+                data-img="img/7.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Almohadón Rústico</h3>
+              <div class="p-price"><span class="current">$17.000</span></div>
+            </div>
+          </article>
+
+
 
         </div>
+      </div>
 
-        <!-- =================================
-           HEADER MENU Movil
-        ================================== -->
-        <div class="header-menu-movil">
-            <button class="cerrar-menu"><i class="fas fa-times"></i></button>
-            <ul>
-                <li><a href="#Categorías">Categorías</a></li>
-                <li><a href="#Productos">Productos</a></li>
-                <li><a href="#Contacto">Contacto</a></li>
-            </ul>
-        </div>
+      <!-- MANTAS -->
+      <div class="tab-panel" id="tab-mantas" role="tabpanel">
+        <div class="products-grid">
 
-
-
-        <!-- =================================
-           BANNER
-        ================================== -->
-        <div class="hm-banner">
-            <div class="img-banner">
-                <img src="img/img-banner.png" alt="">
+          <article class="product-card" data-aos="fade-up">
+            <div class="p-img-wrap">
+              <img src="img/ChatGPT_Image_22_sept_2025__05_03_31_p_m_.png" alt="Manta Rústica tejida beige a rayas" loading="lazy"/>
+              <button class="p-quick-add"
+                data-name="Manta Rústica"
+                data-price="25999"
+                data-img="img/ChatGPT_Image_22_sept_2025__05_03_31_p_m_.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
             </div>
-            <a href=""></a>
-        </div>
-
-        <!-- =================================
-           HOME CATEGROIAS
-        ================================== -->
-        <div class="hm-page-block" id="Categorías">
-            <div class="container">
-                <div class="header-title">
-                    <h1  data-aos="fade-up" data-aos-duration="3000">Categorías</h1>
-                </div>
-
-                <div class="hm-grid-category">
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1000">
-                   
-                            <img src="img/c-1.png" alt="">
-                            <div class="c-info">
-                                <h3>Almohadones</h3>
-                            </div>
-                      
-                    </div>
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1500">
-             
-                            <img src="img/c-2.png" alt="">
-                            <div class="c-info">
-                                <h3>Mantas</h3>
-                            </div>
-                    
-                    </div>
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000">
-                  
-                            <img src="img/c-3.png" alt="">
-                            <div class="c-info">
-                                <h3>Manteles</h3>
-                            </div>
-                      
-                    </div>
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000">
-                  
-                            <img src="img/c-4.png" alt="">
-                            <div class="c-info">
-                                <h3>Repasadores</h3>
-                            </div>
-                       
-                    </div>
-
-                </div>
-
+            <div class="p-info">
+              <h3>Manta Rústica</h3>
+              <div class="p-price"><span class="current">$25.999</span></div>
             </div>
-        </div>
-
-
-         <!-- =================================
-           HOME PRODUCTOS DESTACADOS
-        ================================== -->
-        <div class="hm-page-block bg-fondo"id="Productos">
-
-            <div class="container">
-
-                <div class="header-title" data-aos="fade-up">
-                    <h1>Productos populares</h1>
-                </div>
-
-                <!-- TABS -->
-                <ul class="hm-tabs" data-aos="fade-up">
-                    <li class="hm-tab-link">
-                        Almohadones
-                    </li>
-
-                    <li class="hm-tab-link ">
-                        Mantas
-                    </li>
-
-                    <li class="hm-tab-link ">
-                        Manteles
-                    </li>
-
-                    <li class="hm-tab-link ative">
-                        Repasadores
-                    </li>
-
-                </ul>
-
-                <!-- CONTENIDO DE LOS TABS -->
-                <!-- Almohadones -->
-                <div class="tabs-content" data-aos="fade-up">
-
-                    <div class="grid-product">
-
-                        <div class="product-item">
-                            <div class="p-portada">
-                           
-                                    <img src="img/5.png" alt="almohadón de tusor">
-                            
-                                <span class="stin stin-new">Nuevo</span>
-                            </div>
-
-                            <div class="p-info">
-                              <h3>Almohadón de Tusor</h3>
-                                <div class="precio">
-                                    <span>$14990</span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="product-item">
-                            <div class="p-portada">
-                           
-                                    <img src="img/6.png" alt="almohadón de pana">
-                            
-                            </div>
-
-                            <div class="p-info">
-                             <h3>Almohadón de Pana</h3>
-                                <div class="precio">
-                                    <span>$19970</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="product-item">
-                            <div class="p-portada">
-                  
-                                    <img src="img/7.png" alt="">
-                       
-                            </div>
-
-                            <div class="p-info">
-                   <h3>Almohadón Rústico</h3>
-                                <div class="precio">
-                                    <span>$17000</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-    
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Mantas -->
-                <div class="tabs-content" data-aos="fade-up">
-
-                    <div class="grid-product">
-
-                        <div class="product-item">
-                            <div class="p-portada">
-                               
-                                    <img src="img/ChatGPT Image 22 sept 2025, 05_03_31 p.m..png" alt="">
-
-                            </div>
-
-                            <div class="p-info">
-                           <h3>Manta Rústica</h3>
-                                <div class="precio">
-                                    <span>$25999</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                            <div class="product-item">
-                            <div class="p-portada">
-                  
-                                    <img src="img/8.png" alt="">
-                                
-                            </div>
-
-                            <div class="p-info">
-                        <h3>Manta Rústica</h3>
-                                <div class="precio">
-                                    <span>$25999</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Manteles -->
-                <div class="tabs-content" data-aos="fade-up">
-
-                    <div class="grid-product">
-
-                        <div class="product-item">
-                            <div class="p-portada">
-                  
-                                    <img src="img/slide8.JPG" alt="">
-                                
-                                 <span class="stin stin-oferta">Oferta</span>
-                            </div>
-
-                            <div class="p-info">
-                     <h3>Mantel Gabardina Oliva<br>180 x 140 cm.</h3>
-                                <div class="precio">
-                                    <span>$29999</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-               
-                        <div class="product-item">
-                            <div class="p-portada">
-   
-                                    <img src="img/slide4.JPG" alt="">
-                                
-                                 <span class="stin stin-oferta">Oferta</span>
-                            </div>
-
-                            <div class="p-info">
-                  <h3>Mantel Gabardina Impermeable <br>240 x 140 cm.</h3>
-                                <div class="precio">
-                                    <span>$39999</span>
-                                </div>
-
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-
-                <!-- Repasadores -->
-                <div class="tabs-content" data-aos="fade-up">
-
-                    <div class="grid-product">
-
-                        <div class="product-item">
-                            <div class="p-portada">
-            
-                                    <img src="img/c-4.png" alt="">
-                                
-                                <span class="stin stin-oferta">Oferta</span>
-                            </div>
-
-                            <div class="p-info">
-                        <h3>Repasador Nido Oliva</h3>
-                                <div class="precio">
-                                    <span>$6000</span>
-                                    <span class="thash">$8000</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="product-item">
-                            <div class="p-portada">
-          
-                                    <img src="img/1.png" alt="">
-                                
-                                <span class="stin stin-oferta">Oferta</span>
-                            </div>
-
-                            <div class="p-info">
-                       <h3>Repasador Nido Amarillo</h3>
-                                <div class="precio">
-                                    <span>$6000</span>
-                                    <span class="thash">$8000</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="product-item">
-                            <div class="p-portada">
-                    
-                                    <img src="img/2.png" alt="">
-                                
-                                <span class="stin stin-oferta">Oferta</span>
-                            </div>
-
-                            <div class="p-info">
-                           <h3>Repasador Nido Arena</h3>
-                                <div class="precio">
-                                    <span>$6000</span>
-
-                                    <span class="thash">$8000</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-                         <div class="product-item">
-                            <div class="p-portada">
-                     
-                                    <img src="img/4.png" alt="">
-                                
-                                <span class="stin stin-oferta">Oferta</span>
-                            </div>
-
-                            <div class="p-info">
-                             <h3>Repasador Nido Elefante</h3>
-                                <div class="precio">
-                                    <span>$6000</span>
-
-                                    <span class="thash">$8000</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+          </article>
+
+          <article class="product-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="p-img-wrap">
+              <img src="img/8.png" alt="Manta de Lana natural a rayas" loading="lazy"/>
+              <button class="p-quick-add"
+                data-name="Manta de Lana"
+                data-price="25999"
+                data-img="img/8.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
             </div>
+            <div class="p-info">
+              <h3>Manta Rústica</h3>
+              <div class="p-price"><span class="current">$25.999</span></div>
+            </div>
+          </article>
 
-         <!-- =================================
-           FOOTER
-        ================================== -->
-        <footer>
-            
-            <div class="container">
+        </div>
+      </div>
 
-                <div class="foo-row" id="Contacto">
-                    <div class="foo-col">
-                        <h2>Contactate  <br>con nosotros</h2>
-                       <!-- FORMULARIO -->
-<form action="https://formsubmit.co/nahirfabiani@hotmail.com" method="POST" class="newsletter-form">
-  <div class="f-input">
-    <input type="email" name="email" placeholder="Ingrese su correo" required>
-    <button type="submit" class="hm-btn-round btn-primary">
-      <i class="far fa-paper-plane"></i>
+      <!-- MANTELES -->
+      <div class="tab-panel" id="tab-manteles" role="tabpanel">
+        <div class="products-grid">
+
+          <article class="product-card" data-aos="fade-up">
+            <div class="p-img-wrap">
+              <img src="img/slide8.JPG" alt="Mantel Gabardina color Oliva 180x140 cm" loading="lazy"/>
+              <span class="p-badge badge-sale">Oferta</span>
+              <button class="p-quick-add"
+                data-name="Mantel Gabardina Oliva 180×140"
+                data-price="29999"
+                data-img="img/slide8.JPG">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Mantel Gabardina Oliva — 180×140 cm</h3>
+              <div class="p-price"><span class="current">$29.999</span></div>
+            </div>
+          </article>
+
+          <article class="product-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="p-img-wrap">
+              <img src="img/slide4.JPG" alt="Mantel Gabardina Impermeable 240x140 cm" loading="lazy"/>
+              <span class="p-badge badge-sale">Oferta</span>
+              <button class="p-quick-add"
+                data-name="Mantel Gabardina Impermeable 240×140"
+                data-price="39999"
+                data-img="img/slide4.JPG">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Mantel Gabardina Impermeable — 240×140 cm</h3>
+              <div class="p-price"><span class="current">$39.999</span></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- REPASADORES -->
+      <div class="tab-panel" id="tab-repasadores" role="tabpanel">
+        <div class="products-grid">
+
+          <article class="product-card" data-aos="fade-up">
+            <div class="p-img-wrap">
+              <img src="img/c-4.png" alt="Repasador Nido color Oliva" loading="lazy"/>
+              <span class="p-badge badge-sale">Oferta</span>
+              <button class="p-quick-add"
+                data-name="Repasador Nido Oliva"
+                data-price="6000"
+                data-img="img/c-4.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Repasador Nido Oliva</h3>
+              <div class="p-price">
+                <span class="current">$6.000</span>
+                <span class="original">$8.000</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="p-img-wrap">
+              <img src="img/c-2.png" alt="Repasador Nido color Arena" loading="lazy"/>
+              <span class="p-badge badge-sale">Oferta</span>
+              <button class="p-quick-add"
+                data-name="Repasador Nido Arena"
+                data-price="6000"
+                data-img="img/c-2.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Repasador Nido Arena</h3>
+              <div class="p-price">
+                <span class="current">$6.000</span>
+                <span class="original">$8.000</span>
+              </div>
+            </div>
+          </article>
+<article class="product-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="p-img-wrap">
+              <img src="img/c-2.png" alt="Repasador Nido color Arena" loading="lazy"/>
+              <span class="p-badge badge-sale">Oferta</span>
+              <button class="p-quick-add"
+                data-name="Repasador Nido Arena"
+                data-price="6000"
+                data-img="img/c-2.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Repasador Nido Arena</h3>
+              <div class="p-price">
+                <span class="current">$6.000</span>
+                <span class="original">$8.000</span>
+              </div>
+            </div>
+          </article>
+          <article class="product-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="p-img-wrap">
+              <img src="img/c-1.png" alt="Repasador Nido color amarillo" loading="lazy"/>
+              <span class="p-badge badge-sale">Oferta</span>
+              <button class="p-quick-add"
+                data-name="Repasador Nido Amarillo"
+                data-price="6000"
+                data-img="img/c-1.png">
+                <i class="fas fa-bag-shopping"></i> Agregar al carrito
+              </button>
+            </div>
+            <div class="p-info">
+              <h3>Repasador Nido Amarillo</h3>
+              <div class="p-price">
+                <span class="current">$6.000</span>
+                <span class="original">$8.000</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       LIFESTYLE BANNER
+  ══════════════════════════════ -->
+  <section id="lifestyle" aria-hidden="true">
+    <img src="img/img-banner.png" alt="" role="presentation" loading="lazy"/>
+    <div class="life-overlay" data-aos="fade-up">
+      <h2>Hecho para <em>vivir</em><br/>con estilo</h2>
+      <a href="#productos" class="btn-primary">Comprar ahora</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       BENEFICIOS
+  ══════════════════════════════ -->
+  <section id="beneficios" aria-labelledby="ben-title">
+    <div class="container">
+      <h2 id="ben-title" class="sr-only">Nuestros beneficios</h2>
+      <div class="benefits-grid" data-aos="fade-up">
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-truck-fast"></i></div>
+          <h4>Envío a todo el país</h4>
+          <p>Despachamos en 24–48 hs hábiles desde que recibimos tu pago.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+          <h4>Materiales naturales</h4>
+          <p>Telas seleccionadas con enfoque en calidad y durabilidad.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-shield-halved"></i></div>
+          <h4>Compra segura</h4>
+          <p>Pagos protegidos y atención personalizada en cada pedido.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <h4>Atención por WhatsApp</h4>
+          <p>Respondemos consultas de lunes a sábados de 9 a 18 hs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer id="contacto" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <span class="f-logo">COSI</span>
+        <p>Textiles para el hogar con identidad. Almohadones, mantas y accesorios para espacios con carácter.</p>
+        <div class="f-social">
+          <a href="#" aria-label="Instagram COSI"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook COSI"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=541162674311" aria-label="WhatsApp COSI"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#tab-almohadones">Almohadones</a></li>
+          <li><a href="#tab-mantas">Mantas</a></li>
+          <li><a href="#tab-manteles">Manteles</a></li>
+          <li><a href="#tab-repasadores">Repasadores</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#">Cómo comprar</a></li>
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Cambios y devoluciones</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter" id="contacto-form">
+        <h4>Novedades</h4>
+        <p>Suscribite para recibir colecciones nuevas y descuentos exclusivos.</p>
+        <form action="https://formsubmit.co/nahirfabiani@hotmail.com" method="POST" class="f-form" aria-label="Formulario de suscripción">
+          <input type="email" name="email" placeholder="tu@email.com" required aria-label="Tu correo electrónico"/>
+          <button type="submit" aria-label="Suscribirse">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 COSI.DECO — Todos los derechos reservados</p>
+      <a href="https://nahirfabiani.github.io/tuproyectohoy/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.08em;transition:color .2s;" onmouseover="this.style.color='rgba(255,255,255,0.55)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Powered by Tu Proyecto Hoy
+      </a>
+      <a href="#">Política de privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://api.whatsapp.com/send?phone=541162674311&text=Hola%20quiero%20comprar%20en%20COSI%20%F0%9F%A4%8D"
+   id="whatsapp-btn"
+   target="_blank"
+   rel="noopener"
+   aria-label="Contactar por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ══════════════════════════════
+     CARRITO SIDEBAR
+══════════════════════════════ -->
+<div id="cart-overlay" aria-hidden="true"></div>
+
+<aside id="cart-sidebar" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+  <div class="cart-head">
+    <div>
+      <h2>Tu carrito <span class="cart-count-label" id="cart-count-label"></span></h2>
+    </div>
+    <button id="btn-close-cart" aria-label="Cerrar carrito"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div id="cart-items">
+    <div class="cart-empty" id="cart-empty-state">
+      <i class="fa-regular fa-bag-shopping"></i>
+      <p>Tu carrito está vacío.</p>
+    </div>
+  </div>
+
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <p>Subtotal</p>
+      <span class="subtotal-val" id="cart-total">$0</span>
+    </div>
+    <p class="cart-shipping-note">
+      <i class="fas fa-truck-fast"></i>
+      Envío calculado al finalizar
+    </p>
+    <button class="btn-checkout" id="btn-checkout">
+      <i class="fas fa-lock"></i>
+      Iniciar pedido
+    </button>
+    <button class="btn-checkout-wa" id="btn-checkout-wa">
+      <i class="fab fa-whatsapp"></i>
+      Pedir por WhatsApp
     </button>
   </div>
-</form>
+</aside>
 
-<!-- ÍCONO WHATSAPP -->
-<a href="https://api.whatsapp.com/send?phone=541162674311&text=Hola%20quiero%20comprar%20en%20COSI%20%F0%9F%A4%8D" 
-   class="whatsapp" target="_blank">
-  <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
-</a>
-                    </div>
+<!-- Toast -->
+<div id="toast" role="status" aria-live="polite">
+  <i class="fas fa-check-circle"></i>
+  <span id="toast-msg">Producto agregado</span>
+</div>
 
-                </div>
+<!-- ══════════════════════════════
+     SCRIPTS
+══════════════════════════════ -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 800, once: true, offset: 60 });
 
-            </div>
+/* ── NAVBAR SCROLL ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
 
-        </footer>
+/* ── MENÚ MÓVIL ── */
+const hamburger   = document.getElementById('nav-hamburger');
+const mobileMenu  = document.getElementById('mobile-menu');
+const closeMenu   = document.getElementById('close-mobile');
 
-        <div class="foo-copy">
-            <div class="container">
-                <p>COSI.DECO 2025 © Todos los derechos reservados</p>
-                <a href="https://www.siteground.com/index.htm?afcode=6b53b2514afd182714e95285cf3f6ab5" target="_blank" style="text-decoration:none;">
-    <button class="hm-btn btn-primary" style="margin-top:30px; font-size:16px; border-radius:30px; padding:14px 40px;">
-        <i class="fas fa-star" style="margin-right:8px;"></i> ¡Quiero un sitio igual!
-    </button>
-</a>
-    
-    <!-- Animaciones : AOS-->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+});
+const closeMob = () => {
+  mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+};
+closeMenu.addEventListener('click', closeMob);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMob));
 
-    <!-- Mi Script -->
-    <script src="js/app.js"></script>
+/* ── TABS ── */
+const tabBtns   = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
 
-    <script>
-    
-        AOS.init({
-            duration: 1200,
-        })
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    tabPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
 
+/* ══════════════════════════════
+   CARRITO DE COMPRAS
+══════════════════════════════ */
+let cart = JSON.parse(localStorage.getItem('cosi_cart') || '[]');
 
-    </script>
+const cartSidebar   = document.getElementById('cart-sidebar');
+const cartOverlay   = document.getElementById('cart-overlay');
+const cartItemsEl   = document.getElementById('cart-items');
+const cartCountEl   = document.getElementById('cart-count');
+const cartTotalEl   = document.getElementById('cart-total');
+const cartEmptyEl   = document.getElementById('cart-empty-state');
+const cartLabelEl   = document.getElementById('cart-count-label');
+const toastEl       = document.getElementById('toast');
+const toastMsgEl    = document.getElementById('toast-msg');
+
+/* Abrir / cerrar */
+function openCart() {
+  cartSidebar.classList.add('open');
+  cartOverlay.classList.add('open');
+  cartOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  cartSidebar.classList.remove('open');
+  cartOverlay.classList.remove('open');
+  cartOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('btn-cart').addEventListener('click', openCart);
+document.getElementById('btn-close-cart').addEventListener('click', closeCart);
+cartOverlay.addEventListener('click', closeCart);
+
+/* Toast */
+function showToast(msg) {
+  toastMsgEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastEl._t);
+  toastEl._t = setTimeout(() => toastEl.classList.remove('show'), 2400);
+}
+
+/* Formatear precio */
+function formatPrice(n) {
+  return '$' + Number(n).toLocaleString('es-AR');
+}
+
+/* Guardar y renderizar */
+function saveCart() {
+  localStorage.setItem('cosi_cart', JSON.stringify(cart));
+  renderCart();
+}
+
+function renderCart() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+
+  /* Badge */
+  cartCountEl.textContent = count;
+  cartCountEl.classList.toggle('show', count > 0);
+
+  /* Label */
+  cartLabelEl.textContent = count > 0 ? `(${count} ${count === 1 ? 'item' : 'items'})` : '';
+
+  /* Total */
+  cartTotalEl.textContent = formatPrice(total);
+
+  /* Estado vacío */
+  cartEmptyEl.style.display = cart.length === 0 ? 'flex' : 'none';
+
+  /* Items */
+  const existing = cartItemsEl.querySelectorAll('.cart-item');
+  existing.forEach(e => e.remove());
+
+  cart.forEach((item, idx) => {
+    const el = document.createElement('div');
+    el.className = 'cart-item';
+    el.innerHTML = `
+      <div class="cart-item-img">
+        <img src="${item.img}" alt="${item.name}" loading="lazy"/>
+      </div>
+      <div class="cart-item-info">
+        <h4>${item.name}</h4>
+        <p class="ci-price">${formatPrice(item.price)}</p>
+        <div class="qty-ctrl">
+          <button data-idx="${idx}" data-action="dec" aria-label="Reducir cantidad">−</button>
+          <span>${item.qty}</span>
+          <button data-idx="${idx}" data-action="inc" aria-label="Aumentar cantidad">+</button>
+        </div>
+      </div>
+      <button class="btn-remove-item" data-idx="${idx}" aria-label="Eliminar ${item.name}">
+        <i class="fas fa-trash-can"></i>
+      </button>
+    `;
+    cartItemsEl.appendChild(el);
+  });
+}
+
+/* Delegación de eventos en carrito */
+cartItemsEl.addEventListener('click', e => {
+  const btn = e.target.closest('[data-idx]');
+  if (!btn) return;
+  const idx = parseInt(btn.dataset.idx);
+
+  if (btn.dataset.action === 'inc') {
+    cart[idx].qty++;
+    saveCart();
+  } else if (btn.dataset.action === 'dec') {
+    cart[idx].qty--;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    saveCart();
+  } else if (btn.classList.contains('btn-remove-item') || btn.closest('.btn-remove-item')) {
+    const i2 = parseInt((btn.closest('.btn-remove-item') || btn).dataset.idx);
+    const removed = cart.splice(i2, 1)[0];
+    saveCart();
+    showToast(`"${removed.name}" eliminado`);
+  }
+});
+
+/* Agregar producto */
+function addToCart(name, price, img) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price: parseInt(price), img, qty: 1 });
+  }
+  saveCart();
+  showToast(`"${name}" agregado al carrito`);
+  openCart();
+}
+
+/* Botones "agregar" en tarjetas */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.p-quick-add');
+  if (!btn) return;
+  addToCart(btn.dataset.name, btn.dataset.price, btn.dataset.img);
+});
+
+/* Checkout: armar mensaje WhatsApp */
+document.getElementById('btn-checkout-wa').addEventListener('click', () => {
+  if (cart.length === 0) return;
+  const lines = cart.map(i => `• ${i.name} x${i.qty} = ${formatPrice(i.price * i.qty)}`).join('%0A');
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const msg = `Hola! Me interesa hacer el siguiente pedido:%0A%0A${lines}%0A%0ATotal: ${formatPrice(total)}%0A%0A¿Cómo sigo?`;
+  window.open(`https://api.whatsapp.com/send?phone=541162674311&text=${msg}`, '_blank');
+});
+
+document.getElementById('btn-checkout').addEventListener('click', () => {
+  if (cart.length === 0) return;
+  document.getElementById('btn-checkout-wa').click();
+});
+
+/* Inicializar */
+renderCart();
+</script>
 
 </body>
 </html>
